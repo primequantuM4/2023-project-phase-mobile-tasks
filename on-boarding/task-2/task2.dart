@@ -6,31 +6,35 @@ void main(List<String> args) {
 
   while (!quit) {
     print('What do you want to do:');
-    print(
-        "Add a task, Edit a Task, Delete a task, View all Tasks, View completed tasks, View pending tasks, quit");
+    print("-------------------------------------");
+    print("1. Add a task");
+    print("2. Edit a task");
+    print("3. Delete a task");
+    print("4. View all tasks");
+    print("5. View completed tasks");
+    print("6. View pending tasks");
+    print("Press any other key to exit");
     String? response = stdin.readLineSync();
     while (response == null) {
       print("Invalid task please choose a correct Task");
       response = stdin.readLineSync();
       print("-----------------------------------");
     }
-    if (response.toLowerCase() == "add a task") {
+    if (response.toLowerCase() == "1") {
       addTask(tm);
-    } else if (response.toLowerCase() == "edit a task") {
+    } else if (response.toLowerCase() == "2") {
       editTask(tm);
-    } else if (response.toLowerCase() == "delete a task") {
+    } else if (response.toLowerCase() == "3") {
       deleteTask(tm);
-    } else if (response.toLowerCase() == "view completed tasks") {
-      tm.viewCompletedTasks();
-    } else if (response.toLowerCase() == "view all tasks") {
+    } else if (response.toLowerCase() == "4") {
       tm.viewAllTasks();
-    } else if (response.toLowerCase() == "view pending tasks") {
+    } else if (response.toLowerCase() == "5") {
+      tm.viewCompletedTasks();
+    } else if (response.toLowerCase() == "6") {
       tm.viewPendingTasks();
-    } else if (response.toLowerCase() == "quit") {
+    } else {
       print("--------quiting-------------");
       quit = true;
-    } else {
-      print("Command doesn't exist please try again");
     }
   }
 }
