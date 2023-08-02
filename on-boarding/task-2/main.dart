@@ -19,12 +19,7 @@ void main(List<String> args) {
     print("5. View completed tasks");
     print("6. View pending tasks");
     print("Press any other key to exit");
-    String? response = stdin.readLineSync();
-    while (response == null) {
-      print("Invalid task please choose a correct Task");
-      response = stdin.readLineSync();
-      print("-----------------------------------");
-    }
+    String response = stdin.readLineSync()!;
     if (response.toLowerCase() == "1") {
       pm.addTask(tm);
     } else if (response.toLowerCase() == "2") {
