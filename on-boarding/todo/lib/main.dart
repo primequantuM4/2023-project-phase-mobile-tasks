@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'screens/todo_app.dart';
+import 'package:todo/screens/todo_app.dart';
 
 void main() {
-  runApp(const TodoApp());
+  runApp(TodoApp());
 }
 
 

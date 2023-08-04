@@ -1,7 +1,5 @@
 
 import 'package:flutter/material.dart';
-
-import '../screens/create_task_screen.dart';
 import 'custom_button.dart';
 
 class CustomWidgetBackgroundWithButton extends StatelessWidget {
@@ -18,7 +16,7 @@ class CustomWidgetBackgroundWithButton extends StatelessWidget {
     ),
   );
   final Image _backgroundImage = Image.asset(
-    'assets/images/stick-man-painting-on-canvas.png',
+    'images/stick-man-painting-on-canvas.png',
     fit: BoxFit.contain,
     width: double.infinity,
     height: double.infinity,
@@ -30,8 +28,7 @@ class CustomWidgetBackgroundWithButton extends StatelessWidget {
       _backgroundImage,
       CustomButton(
           navigateTo: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => CreateTaskScreen()));
+            Navigator.pushNamed(context, '/todo-list');
           },
           text: "Get Started")
     ]);

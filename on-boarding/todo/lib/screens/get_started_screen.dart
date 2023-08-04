@@ -6,6 +6,6 @@ class GetStartedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomWidgetBackgroundWithButton();
+    return Scaffold(body: CustomWidgetBackgroundWithButton());
   }
 }

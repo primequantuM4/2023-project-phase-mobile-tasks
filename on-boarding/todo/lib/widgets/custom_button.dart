@@ -4,7 +4,6 @@ class CustomButton extends StatelessWidget {
   const CustomButton({super.key, this.navigateTo, required this.text});
   final VoidCallback? navigateTo;
   final String text;
-  // final int borderRadius;
   @override
   Widget build(BuildContext context) {
     return Container(
