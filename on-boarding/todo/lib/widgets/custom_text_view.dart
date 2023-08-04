@@ -21,7 +21,6 @@ class CustomTextView extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         Container(
-          // color: const Color.fromARGB(255, 197, 196, 196),
           decoration: BoxDecoration(
               color: Color.fromARGB(255, 197, 196, 196),
               borderRadius: BorderRadius.circular(5)),
