@@ -14,7 +14,8 @@ class TodoListScreen extends StatefulWidget {
 
 class _TodoListScreenState extends State<TodoListScreen> {
   void _navigateToNextScreen(BuildContext context) async {
-    final Tasks? result = await Navigator.push(context, MaterialPageRoute(builder: (context) => CreateTaskScreen()));
+    final Tasks? result = await Navigator.push(
+        context, MaterialPageRoute(builder: (context) => CreateTaskScreen()));
     if (result != null) {
       setState(() {
         taskCardInfo.add(result);
@@ -53,7 +54,10 @@ class _TodoListScreenState extends State<TodoListScreen> {
               children: taskCardInfo.map((element) {
                 return InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ViewTask(tasks: element)));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ViewTask(tasks: element)));
                     },
                     child: TaskCard(tasks: element));
               }).toList(),

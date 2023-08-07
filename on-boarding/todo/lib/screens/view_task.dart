@@ -12,24 +12,26 @@ class ViewTask extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(titleText: "Task Detail"),
-        body: Column(
-          children: [
-            Image.asset(
-              'images/motivated-girl.png',
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            CustomTextView(passedValue: tasks.taskName, textHeader: "Title",),
-            SizedBox(
-              height: 15,
-            ),
-            CustomTextView(passedValue: tasks.description, textHeader: "Description", height: 100,),
-            SizedBox(
-              height: 15,
-            ),
-            CustomTextView(passedValue: DateFormat("MMM dd, yyyy").format(tasks.dueDate), textHeader: "Due date")
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Image.asset(
+                'images/motivated-girl.png',
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              CustomTextView(passedValue: tasks.taskName, textHeader: "Title",),
+              SizedBox(
+                height: 15,
+              ),
+              CustomTextView(passedValue: tasks.description, textHeader: "Description", height: 100,),
+              SizedBox(
+                height: 15,
+              ),
+              CustomTextView(passedValue: DateFormat("MMM dd, yyyy").format(tasks.dueDate), textHeader: "Due date")
+            ],
+          ),
         ),
       );
   }
