@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'custom_button.dart';
 
 class CustomWidgetBackgroundWithButton extends StatelessWidget {
@@ -28,7 +28,7 @@ class CustomWidgetBackgroundWithButton extends StatelessWidget {
       _backgroundImage,
       CustomButton(
           navigateTo: () {
-            Navigator.pushNamed(context, '/todo-list');
+            context.push('/todo-list');
           },
           text: "Get Started")
     ]);

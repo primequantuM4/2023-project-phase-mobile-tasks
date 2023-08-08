@@ -34,7 +34,6 @@ class CustomFormField extends StatelessWidget {
         height: 5,
       ),
       Container(
-        // alignment: Alignment.centerLeft,
         height: (height == null ? 40 : height!.toDouble()),
         width: 300,
         decoration: BoxDecoration(

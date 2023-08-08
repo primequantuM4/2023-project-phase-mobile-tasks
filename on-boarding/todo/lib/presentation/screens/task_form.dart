@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:todo/Model/Tasks.dart';
+import 'package:todo/domain/entity/tasks.dart';
 
 import '../widgets/custom_form_field.dart';
 
@@ -24,10 +25,14 @@ class TaskFormState extends State<TaskForm> {
     bool everyThingFilled =
         taskName.text != "" && description.text != "" && dueDate.text != "";
     if (everyThingFilled) {
-      Navigator.pop(context,
-          Tasks(taskName.text, DateTime.parse(dueDate.text), description.text));
+      final newTask = {
+        "taskName": taskName.text,
+        "description": description.text,
+        "dueDate": dueDate.text
+      };
+      context.pop(newTask);
     } else {
-      Navigator.pop(context);
+      context.pop();
     }
   }
 

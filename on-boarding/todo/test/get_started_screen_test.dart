@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:todo/screens/get_started_screen.dart';
-import 'package:todo/screens/todo_app.dart';
-import 'package:todo/screens/todo_list_screen.dart';
-import 'package:todo/widgets/custom_button.dart';
-import 'package:todo/widgets/custom_widget_background_with_button.dart';
+import 'package:todo/presentation/screens/get_started_screen.dart';
+import 'package:todo/todo_app.dart';
+import 'package:todo/presentation/screens/todo_list_screen.dart';
+import 'package:todo/presentation/widgets/custom_button.dart';
+import 'package:todo/presentation/widgets/custom_widget_background_with_button.dart';
 
 void main() {
   group('Get started screen test', () {

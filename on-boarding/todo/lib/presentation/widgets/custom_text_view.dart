@@ -5,11 +5,13 @@ class CustomTextView extends StatelessWidget {
       {super.key,
       required this.passedValue,
       required this.textHeader,
+      this.buttonVal,
       this.height});
 
   final String passedValue;
   final String textHeader;
   final int? height;
+  final TextButton? buttonVal;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class CustomTextView extends StatelessWidget {
               borderRadius: BorderRadius.circular(5)),
           padding: EdgeInsets.all(5),
           width: 350,
-          height: (height == null? 60 : height!.toDouble()),
+          height: (height == null ? 60 : height!.toDouble()),
           child: TextFormField(
             maxLines: null,
             enabled: false,
@@ -34,6 +36,7 @@ class CustomTextView extends StatelessWidget {
             decoration: InputDecoration(border: InputBorder.none),
           ),
         ),
+        if(buttonVal != null) buttonVal!
       ],
     );
   }

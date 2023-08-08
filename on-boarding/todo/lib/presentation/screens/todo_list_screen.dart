@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todo/Model/Tasks.dart';
-import 'package:todo/screens/create_task_screen.dart';
-import 'package:todo/screens/view_task.dart';
-import 'package:todo/widgets/custom_appbar.dart';
-import 'package:todo/widgets/task_card.dart';
+import 'package:go_router/go_router.dart';
+import 'package:todo/domain/use_case/task_use_case.dart';
+import 'package:todo/presentation/widgets/custom_appbar.dart';
+import 'package:todo/presentation/widgets/task_card.dart';
 
 class TodoListScreen extends StatefulWidget {
   TodoListScreen({super.key});
@@ -13,17 +12,36 @@ class TodoListScreen extends StatefulWidget {
 }
 
 class _TodoListScreenState extends State<TodoListScreen> {
+  TaskUseCase _taskUseCase = TaskUseCase([]);
+  final Map<bool, Color> colorMapping = {
+    false: Colors.red,
+    true: Colors.green,
+  };
   void _navigateToNextScreen(BuildContext context) async {
-    final Tasks? result = await Navigator.push(
-        context, MaterialPageRoute(builder: (context) => CreateTaskScreen()));
+    final Map<String, String>? result =
+        await context.push<Map<String, String>?>('/create-task');
     if (result != null) {
       setState(() {
-        taskCardInfo.add(result);
+        _taskUseCase.createTask(
+            result["taskName"] as String,
+            result["description"] as String,
+            DateTime.parse(result["dueDate"] as String));
       });
     }
   }
 
-  List<Tasks> taskCardInfo = [];
+  void markTask(element) {
+    setState(() {
+      _taskUseCase.completeTask(element.taskId);
+    });
+  }
+
+  void editTaskDeadline(element) async {
+    DateTime? result = await context.push('/view-task', extra: element);
+    setState(() {
+      element.dueDate = result!;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,15 +69,19 @@ class _TodoListScreenState extends State<TodoListScreen> {
             fit: FlexFit.loose,
             child: ListView(
               shrinkWrap: true,
-              children: taskCardInfo.map((element) {
+              children: _taskUseCase.viewAllTasks().map((element) {
                 return InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ViewTask(tasks: element)));
+                      editTaskDeadline(element);
                     },
-                    child: TaskCard(tasks: element));
+                    child: TaskCard(
+                      key: ValueKey(element.dueDate),
+                      tasks: element,
+                      onComplete: () {
+                        markTask(element);
+                      },
+                      colorPick: colorMapping[element.completed]!,
+                    ));
               }).toList(),
             ),
           ),
