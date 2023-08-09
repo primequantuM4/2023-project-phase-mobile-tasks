@@ -1,4 +1,4 @@
-import 'package:todo/domain/entity/tasks.dart';
+import 'package:todo/features/todo_list/domain/entity/tasks.dart';
 
 class TaskUseCase {
   List<Tasks> _tasks;

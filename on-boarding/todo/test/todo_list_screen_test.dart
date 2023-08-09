@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:todo/presentation/screens/create_task_screen.dart';
+import 'package:todo/features/todo_list/presentation/screens/create_task_screen.dart';
 import 'package:todo/todo_app.dart';
-import 'package:todo/presentation/screens/todo_list_screen.dart';
-import 'package:todo/presentation/widgets/custom_button.dart';
-import 'package:todo/presentation/widgets/custom_form_field.dart';
-import 'package:todo/presentation/widgets/custom_widget_background_with_button.dart';
-import 'package:todo/presentation/widgets/task_card.dart';
+import 'package:todo/features/todo_list/presentation/screens/todo_list_screen.dart';
+import 'package:todo/features/todo_list/presentation/widgets/custom_button.dart';
+import 'package:todo/features/todo_list/presentation/widgets/custom_form_field.dart';
+import 'package:todo/features/todo_list/presentation/widgets/custom_widget_background_with_button.dart';
+import 'package:todo/features/todo_list/presentation/widgets/task_card.dart';
 
 void main() {
   group("To do list  widget and functionality", () {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:todo/domain/use_case/task_use_case.dart';
-import 'package:todo/presentation/widgets/custom_appbar.dart';
-import 'package:todo/presentation/widgets/task_card.dart';
+import 'package:todo/features/todo_list/domain/use_case/task_use_case.dart';
+import 'package:todo/features/todo_list/presentation/widgets/custom_appbar.dart';
+import 'package:todo/features/todo_list/presentation/widgets/task_card.dart';
 
 class TodoListScreen extends StatefulWidget {
   TodoListScreen({super.key});

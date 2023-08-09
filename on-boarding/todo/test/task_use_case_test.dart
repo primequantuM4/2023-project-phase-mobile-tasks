@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:todo/domain/entity/tasks.dart';
-import 'package:todo/domain/use_case/task_use_case.dart';
+import 'package:todo/features/todo_list/domain/entity/tasks.dart';
+import 'package:todo/features/todo_list/domain/use_case/task_use_case.dart';
 
 void main() {
   late TaskUseCase tuc;

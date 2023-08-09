@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:todo/domain/entity/tasks.dart';
-import 'package:todo/presentation/widgets/custom_appbar.dart';
-import 'package:todo/presentation/widgets/custom_text_view.dart';
+import 'package:todo/features/todo_list/domain/entity/tasks.dart';
+import 'package:todo/features/todo_list/presentation/widgets/custom_appbar.dart';
+import 'package:todo/features/todo_list/presentation/widgets/custom_text_view.dart';
 
 class ViewTask extends StatefulWidget {
   final Tasks tasks;

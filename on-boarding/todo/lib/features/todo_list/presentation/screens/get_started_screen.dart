@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo/presentation/widgets/custom_widget_background_with_button.dart';
+import 'package:todo/features/todo_list/presentation/widgets/custom_widget_background_with_button.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
-import 'package:todo/domain/entity/tasks.dart';
+import 'package:todo/features/todo_list/domain/entity/tasks.dart';
 
 import '../widgets/custom_form_field.dart';
 
