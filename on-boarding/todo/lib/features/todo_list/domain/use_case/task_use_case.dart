@@ -7,8 +7,12 @@ class TaskUseCase {
 
   Tasks createTask(
       String taskName, String taskDescription, DateTime taskDueDate) {
-    final newTask = Tasks(taskName, taskDueDate, taskDescription,
-        DateTime.now().millisecondsSinceEpoch.toString());
+    final newTask = Tasks(
+        taskName: taskName,
+        dueDate: taskDueDate,
+        description: taskDescription,
+        taskId: DateTime.now().millisecondsSinceEpoch.toString(),
+        completed: false);
     _tasks.add(newTask);
     return newTask;
   }
@@ -16,7 +20,8 @@ class TaskUseCase {
   void completeTask(String taskId) {
     final taskIndex = _tasks.indexWhere((task) => task.taskId == taskId);
     if (taskIndex != -1) {
-      _tasks[taskIndex].completed = !_tasks[taskIndex].completed;
+      _tasks[taskIndex] =
+          _tasks[taskIndex].copyWith(completed: !_tasks[taskIndex].completed);
     }
   }
 

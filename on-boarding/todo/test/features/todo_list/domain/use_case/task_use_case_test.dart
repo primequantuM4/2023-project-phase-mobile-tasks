@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:todo/features/todo_list/domain/entity/tasks.dart';
 import 'package:todo/features/todo_list/domain/use_case/task_use_case.dart';
 
+
 void main() {
   late TaskUseCase tuc;
   setUp(() {
@@ -23,9 +24,12 @@ void main() {
 
     test('Tasks should be marked completed when a method is called', () {
       final task = tuc.createTask("X", "Y", DateTime.now());
-      expect(task.completed, false);
+      final taskIndex = tuc.tasks.indexWhere(
+        (element) => task.taskId == element.taskId,
+      );
+      expect(tuc.tasks[taskIndex].completed, false);
       tuc.completeTask(task.taskId);
-      expect(task.completed, true);
+      expect(tuc.tasks[taskIndex].completed, true);
     });
   });
 }
