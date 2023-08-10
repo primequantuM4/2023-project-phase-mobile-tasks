@@ -64,14 +64,14 @@ class MockTodoListRepository extends _i1.Mock
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, List<_i6.Tasks>>>);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, String>> viewSpecificTask() =>
+  _i4.Future<_i2.Either<_i5.Failure, _i6.Tasks>> viewSpecificTask() =>
       (super.noSuchMethod(
         Invocation.method(
           #viewSpecificTask,
           [],
         ),
-        returnValue: _i4.Future<_i2.Either<_i5.Failure, String>>.value(
-            _FakeEither_0<_i5.Failure, String>(
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.Tasks>>.value(
+            _FakeEither_0<_i5.Failure, _i6.Tasks>(
           this,
           Invocation.method(
             #viewSpecificTask,
@@ -79,15 +79,15 @@ class MockTodoListRepository extends _i1.Mock
           ),
         )),
         returnValueForMissingStub:
-            _i4.Future<_i2.Either<_i5.Failure, String>>.value(
-                _FakeEither_0<_i5.Failure, String>(
+            _i4.Future<_i2.Either<_i5.Failure, _i6.Tasks>>.value(
+                _FakeEither_0<_i5.Failure, _i6.Tasks>(
           this,
           Invocation.method(
             #viewSpecificTask,
             [],
           ),
         )),
-      ) as _i4.Future<_i2.Either<_i5.Failure, String>>);
+      ) as _i4.Future<_i2.Either<_i5.Failure, _i6.Tasks>>);
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i6.Tasks>> createTask(_i6.Tasks? tasks) =>
       (super.noSuchMethod(
