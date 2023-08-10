@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:todo/features/todo_list/domain/entity/tasks.dart';
 
 class TaskCard extends StatelessWidget {
-  TaskCard({
+  const TaskCard({
     super.key,
     required this.tasks,
     required this.onComplete,
@@ -22,7 +22,7 @@ class TaskCard extends StatelessWidget {
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       child: Container(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         alignment: Alignment.centerLeft,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,7 +31,7 @@ class TaskCard extends StatelessWidget {
               children: [
                 Material(
                   elevation: 6,
-                  shape: CircleBorder(),
+                  shape: const CircleBorder(),
                   child: CircleAvatar(
                     radius: 30,
                     backgroundColor: Colors.white,
@@ -40,7 +40,7 @@ class TaskCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Container(
@@ -49,7 +49,7 @@ class TaskCard extends StatelessWidget {
                       Wrap(children: [
                         Text(
                           tasks.taskName,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         )
@@ -68,13 +68,13 @@ class TaskCard extends StatelessWidget {
                         value: tasks.completed, onChanged: onChangedHandler)
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Container(
                   width: 5,
                   height: 60,
-                  color: this.colorPick,
+                  color: colorPick,
                 )
               ],
             )

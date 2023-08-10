@@ -1,7 +1,7 @@
 import 'package:todo/features/todo_list/domain/entity/tasks.dart';
 
 class TaskUseCase {
-  List<Tasks> _tasks;
+  final List<Tasks> _tasks;
   TaskUseCase(List<Tasks> initialTasks) : _tasks = initialTasks;
   List<Tasks> get tasks => _tasks;
 

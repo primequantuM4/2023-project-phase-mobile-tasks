@@ -8,12 +8,12 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         alignment: Alignment.bottomCenter,
-        margin: EdgeInsets.all(35),
+        margin: const EdgeInsets.all(35),
         child: SizedBox(
           width: 200,
           height: 35,
           child: ElevatedButton(
-              onPressed: this.navigateTo, child: Text(this.text)),
+              onPressed: navigateTo, child: Text(text)),
         ));
   }
 }

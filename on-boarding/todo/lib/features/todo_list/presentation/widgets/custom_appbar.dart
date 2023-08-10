@@ -12,29 +12,30 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.onActionPressed});
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 1,
       leading: IconButton(
-        icon: Icon(Icons.arrow_back_ios),
+        icon: const Icon(Icons.arrow_back_ios),
         onPressed: () {
           if (onLeadingPressed != null) {
             onLeadingPressed!();
-          }else 
-          context.pop();
+          }else {
+            context.pop();
+          }
         },
-        color: Color(0xFFEE6F57),
+        color: const Color(0xFFEE6F57),
       ),
-      title: Text(this.titleText,
-          style: TextStyle(
+      title: Text(titleText,
+          style: const TextStyle(
               color: Colors.black, fontWeight: FontWeight.w700, fontSize: 18)),
       actions: [
         IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.more_vert,
               color: Colors.black,
             ))

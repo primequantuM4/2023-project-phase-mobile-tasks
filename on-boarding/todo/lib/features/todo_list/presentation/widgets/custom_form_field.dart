@@ -21,10 +21,10 @@ class CustomFormField extends StatelessWidget {
     return Column(children: [
       Container(
         alignment: Alignment.centerLeft,
-        margin: EdgeInsets.only(left: 50),
+        margin: const EdgeInsets.only(left: 50),
         child: Text(
           taskName,
-          style: TextStyle(
+          style: const TextStyle(
               color: Color(0xFFEE6F57),
               fontSize: 15,
               fontWeight: FontWeight.bold),
@@ -52,10 +52,10 @@ class CustomFormField extends StatelessWidget {
                 suffixIcon: IconButton(
                   onPressed: action,
                   icon: Icon(icon),
-                  color: Color(0xFFEE6F57),
+                  color: const Color(0xFFEE6F57),
                 ),
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 7, horizontal: 12)),
+                    const EdgeInsets.symmetric(vertical: 7, horizontal: 12)),
           ),
         ),
       ),

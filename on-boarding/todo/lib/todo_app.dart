@@ -18,14 +18,14 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GoRouter _router =
+    final GoRouter router =
         GoRouter(navigatorKey: GlobalKey<NavigatorState>(), routes: [
-      GoRoute(path: '/', builder: (context, state) => GetStartedScreen()),
+      GoRoute(path: '/', builder: (context, state) => const GetStartedScreen()),
       GoRoute(
-          path: '/todo-list', builder: (context, state) => TodoListScreen()),
+          path: '/todo-list', builder: (context, state) => const TodoListScreen()),
       GoRoute(
           path: '/create-task',
-          builder: (context, state) => CreateTaskScreen()),
+          builder: (context, state) => const CreateTaskScreen()),
       GoRoute(
           path: '/view-task',
           builder: (context, GoRouterState state) =>
@@ -35,17 +35,17 @@ class TodoApp extends StatelessWidget {
       home: BlocProvider(
         create: (context) => TodoListBloc(),
         child: MaterialApp.router(
-          routerConfig: _router,
+          routerConfig: router,
         ),
       ),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          textTheme: TextTheme(
+          textTheme: const TextTheme(
               bodyLarge: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                   fontWeight: FontWeight.bold)),
-          appBarTheme: AppBarTheme(
+          appBarTheme: const AppBarTheme(
             actionsIconTheme: IconThemeData(color: Colors.black),
           )),
       title: "A2SV Tasks",

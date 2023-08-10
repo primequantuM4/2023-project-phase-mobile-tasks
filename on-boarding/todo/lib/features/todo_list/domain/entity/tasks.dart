@@ -7,7 +7,7 @@ class Tasks extends Equatable {
   final String taskId;
   final bool completed;
 
-  Tasks(
+  const Tasks(
       {required this.taskName,
       required this.dueDate,
       required this.description,

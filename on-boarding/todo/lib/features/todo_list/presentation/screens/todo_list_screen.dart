@@ -5,14 +5,14 @@ import 'package:todo/features/todo_list/presentation/widgets/custom_appbar.dart'
 import 'package:todo/features/todo_list/presentation/widgets/task_card.dart';
 
 class TodoListScreen extends StatefulWidget {
-  TodoListScreen({super.key});
+  const TodoListScreen({super.key});
 
   @override
   State<TodoListScreen> createState() => _TodoListScreenState();
 }
 
 class _TodoListScreenState extends State<TodoListScreen> {
-  TaskUseCase _taskUseCase = TaskUseCase([]);
+  final TaskUseCase _taskUseCase = TaskUseCase([]);
   final Map<bool, Color> colorMapping = {
     false: Colors.red,
     true: Colors.green,
@@ -46,7 +46,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(titleText: "Todo List"),
+      appBar: const CustomAppBar(titleText: "Todo List"),
       body: Column(
         children: [
           Container(
@@ -59,8 +59,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
           ),
           Container(
             alignment: Alignment.centerLeft,
-            margin: EdgeInsets.all(10),
-            child: Text(
+            margin: const EdgeInsets.all(10),
+            child: const Text(
               "Tasks list",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
@@ -85,7 +85,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
               }).toList(),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           SizedBox(
@@ -94,11 +94,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
               child: ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(Color(0xFFEE6F57))),
+                          MaterialStateProperty.all(const Color(0xFFEE6F57))),
                   onPressed: () {
                     _navigateToNextScreen(context);
                   },
-                  child: Text("Create Task")))
+                  child: const Text("Create Task")))
         ],
       ),
     );

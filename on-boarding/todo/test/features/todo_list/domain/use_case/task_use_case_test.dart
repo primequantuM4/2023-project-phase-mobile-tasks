@@ -10,8 +10,8 @@ void main() {
   });
   group("Tasks use case", () {
     test('Task use case should be able to create a task', () {
-      final String taskName = "X";
-      final String taskDescription = "Y";
+      const String taskName = "X";
+      const String taskDescription = "Y";
       final date = DateTime.now();
       tuc.createTask(taskName, taskDescription, date);
       expect(tuc.tasks.length, 1);

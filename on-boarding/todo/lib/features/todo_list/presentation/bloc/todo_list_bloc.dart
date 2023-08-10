@@ -16,7 +16,7 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
   _fetchTasks(event, emit) async {
     emit(TodoListLoading());
     //simulating data here
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     List<Tasks> fetchedTasks = [];
     emit(TodoListLoaded(fetchedTasks));
   }
@@ -24,18 +24,18 @@ class TodoListBloc extends Bloc<TodoListEvent, TodoListState> {
   _createTask(CreateTask event, emit) {
     if (state is TodoListLoaded) {
       final _state = (state as TodoListLoaded);
-      TaskUseCase _taskUseCase = TaskUseCase(_state.tasks);
-      _taskUseCase.createTask(event.newTask.taskName, event.newTask.description,
+      TaskUseCase taskUseCase = TaskUseCase(_state.tasks);
+      taskUseCase.createTask(event.newTask.taskName, event.newTask.description,
           event.newTask.dueDate);
-      emit(TodoListLoaded(List.of(_taskUseCase.tasks)));
+      emit(TodoListLoaded(List.of(taskUseCase.tasks)));
     }
   }
 
   _completeTask(CompletedTask event, emit) {
     if (state is TodoListLoaded) {
       final _state = (state as TodoListLoaded);
-      TaskUseCase _taskUseCase = TaskUseCase(_state.tasks);
-      _taskUseCase.completeTask(event.taskId);
+      TaskUseCase taskUseCase = TaskUseCase(_state.tasks);
+      taskUseCase.completeTask(event.taskId);
     }
   }
 }

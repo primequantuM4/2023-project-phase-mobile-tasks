@@ -15,7 +15,8 @@ class TodoListLoading extends TodoListState { }
 final class TodoListLoaded extends TodoListState {
   final List<Tasks> tasks;
 
-  TodoListLoaded(this.tasks);
+  const TodoListLoaded(this.tasks);
 
+  @override
   List<Object> get props => [tasks];
 }

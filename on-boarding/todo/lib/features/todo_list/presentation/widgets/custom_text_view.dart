@@ -20,20 +20,20 @@ class CustomTextView extends StatelessWidget {
       children: [
         Text(
           textHeader,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         Container(
           decoration: BoxDecoration(
-              color: Color.fromARGB(255, 197, 196, 196),
+              color: const Color.fromARGB(255, 197, 196, 196),
               borderRadius: BorderRadius.circular(5)),
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
           width: 350,
           height: (height == null ? 60 : height!.toDouble()),
           child: TextFormField(
             maxLines: null,
             enabled: false,
             initialValue: passedValue,
-            decoration: InputDecoration(border: InputBorder.none),
+            decoration: const InputDecoration(border: InputBorder.none),
           ),
         ),
         if(buttonVal != null) buttonVal!

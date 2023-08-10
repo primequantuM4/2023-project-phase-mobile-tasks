@@ -36,9 +36,9 @@ void main() {
       await widgetTester.tap(find.text('Create Task'));
       await widgetTester.pumpAndSettle();
 
-      final taskName = 'Task test';
-      final dueDate = '2024-10-10';
-      final description = 'This is a task description';
+      const taskName = 'Task test';
+      const dueDate = '2024-10-10';
+      const description = 'This is a task description';
 
       final valueList = [taskName, dueDate, description];
 
@@ -65,7 +65,7 @@ void main() {
 }
 
 Future<void> navigateToScreen(WidgetTester widgetTester) async {
-  await widgetTester.pumpWidget(TodoApp());
+  await widgetTester.pumpWidget(const TodoApp());
   await widgetTester.pumpAndSettle();
 
   final bgWidget = find.byType(CustomWidgetBackgroundWithButton);

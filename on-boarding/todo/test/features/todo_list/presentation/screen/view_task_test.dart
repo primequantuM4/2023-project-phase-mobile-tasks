@@ -32,7 +32,7 @@ void main() {
 }
 
 Future<void> navigateToScreen(WidgetTester widgetTester) async {
-  await widgetTester.pumpWidget(TodoApp());
+  await widgetTester.pumpWidget(const TodoApp());
   await widgetTester.pumpAndSettle();
 
   final bgWidget = find.byType(CustomWidgetBackgroundWithButton);
@@ -50,9 +50,9 @@ Future<void> addTaskToScreen(WidgetTester tester) async {
   await tester.tap(find.text('Create Task'));
   await tester.pumpAndSettle();
 
-  final taskName = "A2SV tasks";
-  final dueDate = "2023-10-10";
-  final description = "Tasks in A2SV";
+  const taskName = "A2SV tasks";
+  const dueDate = "2023-10-10";
+  const description = "Tasks in A2SV";
 
   final valueList = [taskName, dueDate, description];
 

@@ -42,7 +42,7 @@ class TaskFormState extends State<TaskForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 60,
           ),
           CustomFormField(
@@ -50,7 +50,7 @@ class TaskFormState extends State<TaskForm> {
             taskName: "Main task name",
             height: 45,
           ),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           CustomFormField(
@@ -64,32 +64,33 @@ class TaskFormState extends State<TaskForm> {
                   firstDate: DateTime.now(),
                   lastDate: DateTime(2100));
               setState(() {
-                if (newDate != null)
+                if (newDate != null) {
                   dueDate.text = DateFormat('yyyy-MM-dd').format(newDate);
+                }
               });
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           CustomFormField(
               height: 60,
               taskName: "Description",
               taskNameController: description),
-          SizedBox(
+          const SizedBox(
             height: 40,
           ),
           Container(
               alignment: Alignment.center,
               child: ElevatedButton(
                 onPressed: addTaskList,
-                child: Text("Add a task"),
                 style: ButtonStyle(
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
                     backgroundColor:
-                        MaterialStateProperty.all(Color(0xFFEE6F57))),
+                        MaterialStateProperty.all(const Color(0xFFEE6F57))),
+                child: const Text("Add a task"),
               ))
         ],
       ),

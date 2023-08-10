@@ -7,7 +7,7 @@ import 'package:todo/features/todo_list/presentation/widgets/custom_text_view.da
 
 class ViewTask extends StatefulWidget {
   final Tasks tasks;
-  ViewTask({super.key, required this.tasks});
+  const ViewTask({super.key, required this.tasks});
 
   @override
   State<ViewTask> createState() => _ViewTaskState();
@@ -29,6 +29,7 @@ class _ViewTaskState extends State<ViewTask> {
     }
   }
 
+  @override
   void initState() {
     super.initState();
     dueDateText = widget.tasks.dueDate;
@@ -48,14 +49,14 @@ class _ViewTaskState extends State<ViewTask> {
             Image.asset(
               'images/motivated-girl.png',
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             CustomTextView(
               passedValue: widget.tasks.taskName,
               textHeader: "Title",
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             CustomTextView(
@@ -63,7 +64,7 @@ class _ViewTaskState extends State<ViewTask> {
               textHeader: "Description",
               height: 100,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             CustomTextView(
@@ -71,7 +72,7 @@ class _ViewTaskState extends State<ViewTask> {
               passedValue: DateFormat('MMM dd, yyyy').format(dueDateText),
               textHeader: "Due date",
               buttonVal: TextButton(
-                  onPressed: changeDate, child: Text('Extend deadline')),
+                  onPressed: changeDate, child: const Text('Extend deadline')),
             )
           ],
         ),

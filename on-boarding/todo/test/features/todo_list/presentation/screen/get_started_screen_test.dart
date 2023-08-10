@@ -10,13 +10,13 @@ void main() {
   group('Get started screen test', () {
     testWidgets("Custom background and button exsists",
         (WidgetTester tester) async {
-      await tester.pumpWidget(MaterialApp(home: GetStartedScreen()));
+      await tester.pumpWidget(const MaterialApp(home: GetStartedScreen()));
       expect(find.byType(CustomWidgetBackgroundWithButton), findsOneWidget);
     });
 
     testWidgets("""Get Started Screen will go
      to the To do list when button is pressed""", (WidgetTester tester) async {
-      await tester.pumpWidget(TodoApp());
+      await tester.pumpWidget(const TodoApp());
       await tester.pumpAndSettle();
 
       expect(find.byType(GetStartedScreen), findsOneWidget);

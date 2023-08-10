@@ -17,7 +17,7 @@ class CreateTask extends UseCase<Tasks, Params> {
 
 class Params extends Equatable {
   final Tasks tasks;
-  Params({required this.tasks});
+  const Params({required this.tasks});
 
   @override
   List<Object> get props => [tasks];
