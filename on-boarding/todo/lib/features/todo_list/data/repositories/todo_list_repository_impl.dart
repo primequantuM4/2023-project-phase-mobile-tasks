@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:todo/core/error/exception.dart';
 import 'package:todo/core/error/failures.dart';
 import 'package:todo/core/platform/network_info.dart';
 import 'package:todo/features/todo_list/data/data_sources/todo_list_local_data_source.dart';
@@ -23,14 +24,42 @@ class TodoListRepositoryImpl implements TodoListRepository {
   }
 
   @override
-  Future<Either<Failure, List<Tasks>>> viewAllTasks() {
-    // TODO: implement viewAllTasks
-    throw UnimplementedError();
+  Future<Either<Failure, List<Tasks>>> viewAllTasks() async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteTodoList = await remoteDataSource.viewAllTasks();
+        localDataSource.cacheCurrentTodoList(remoteTodoList);
+        return Right(remoteTodoList);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      try {
+        final localTodoList = await localDataSource.getAllTasks();
+        return Right(localTodoList);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    }
   }
 
   @override
-  Future<Either<Failure, Tasks>> viewSpecificTask() {
-    // TODO: implement viewSpecificTask
-    throw UnimplementedError();
+  Future<Either<Failure, Tasks>> viewSpecificTask(String taskId) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteTodo = await remoteDataSource.viewSpecificTask(taskId);
+        localDataSource.cacheCurrentTask(remoteTodo);
+        return Right(remoteTodo);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      try {
+        final localTodo = await localDataSource.getSpecificTask(taskId);
+        return Right(localTodo);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    }
   }
 }

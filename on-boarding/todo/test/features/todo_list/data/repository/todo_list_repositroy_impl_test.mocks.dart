@@ -74,24 +74,25 @@ class MockTodoListRemoteDataSource extends _i1.Mock
             _i4.Future<List<_i2.TasksModel>>.value(<_i2.TasksModel>[]),
       ) as _i4.Future<List<_i2.TasksModel>>);
   @override
-  _i4.Future<_i2.TasksModel> viewSpecificTasks() => (super.noSuchMethod(
+  _i4.Future<_i2.TasksModel> viewSpecificTask(String? taskId) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #viewSpecificTasks,
-          [],
+          #viewSpecificTask,
+          [taskId],
         ),
         returnValue: _i4.Future<_i2.TasksModel>.value(_FakeTasksModel_0(
           this,
           Invocation.method(
-            #viewSpecificTasks,
-            [],
+            #viewSpecificTask,
+            [taskId],
           ),
         )),
         returnValueForMissingStub:
             _i4.Future<_i2.TasksModel>.value(_FakeTasksModel_0(
           this,
           Invocation.method(
-            #viewSpecificTasks,
-            [],
+            #viewSpecificTask,
+            [taskId],
           ),
         )),
       ) as _i4.Future<_i2.TasksModel>);
@@ -114,6 +115,16 @@ class MockTodoListLocalDataSource extends _i1.Mock
         returnValueForMissingStub: _i4.Future<void>.value(),
       ) as _i4.Future<void>);
   @override
+  _i4.Future<void> cacheCurrentTask(_i2.TasksModel? task) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #cacheCurrentTask,
+          [task],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+  @override
   _i4.Future<List<_i2.TasksModel>> getAllTasks() => (super.noSuchMethod(
         Invocation.method(
           #getAllTasks,
@@ -123,6 +134,29 @@ class MockTodoListLocalDataSource extends _i1.Mock
         returnValueForMissingStub:
             _i4.Future<List<_i2.TasksModel>>.value(<_i2.TasksModel>[]),
       ) as _i4.Future<List<_i2.TasksModel>>);
+  @override
+  _i4.Future<_i2.TasksModel> getSpecificTask(String? taskId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getSpecificTask,
+          [taskId],
+        ),
+        returnValue: _i4.Future<_i2.TasksModel>.value(_FakeTasksModel_0(
+          this,
+          Invocation.method(
+            #getSpecificTask,
+            [taskId],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.TasksModel>.value(_FakeTasksModel_0(
+          this,
+          Invocation.method(
+            #getSpecificTask,
+            [taskId],
+          ),
+        )),
+      ) as _i4.Future<_i2.TasksModel>);
 }
 
 /// A class which mocks [NetworkInfo].
