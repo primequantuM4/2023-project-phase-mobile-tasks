@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:todo/core/error/exception.dart';
 import 'package:todo/core/error/failures.dart';
-import 'package:todo/core/platform/network_info.dart';
+import 'package:todo/core/network/network_info.dart';
 import 'package:todo/features/todo_list/data/data_sources/todo_list_local_data_source.dart';
 import 'package:todo/features/todo_list/data/data_sources/todo_list_remote_data_source.dart';
 import 'package:todo/features/todo_list/domain/entity/tasks.dart';
