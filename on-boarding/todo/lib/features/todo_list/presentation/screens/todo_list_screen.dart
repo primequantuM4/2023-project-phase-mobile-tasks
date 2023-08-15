@@ -39,7 +39,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
   void editTaskDeadline(element) async {
     DateTime? result = await context.push('/view-task', extra: element);
     setState(() {
-      element.dueDate = result!;
+      _taskUseCase.editTask(taskId: element.taskId, dueDate: result!);
     });
   }
 

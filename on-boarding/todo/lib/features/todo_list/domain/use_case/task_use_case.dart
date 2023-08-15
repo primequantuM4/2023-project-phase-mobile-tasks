@@ -30,6 +30,22 @@ class TaskUseCase {
     return _tasks[taskIndex];
   }
 
+  void editTask(
+      {required String taskId,
+      String? taskName,
+      DateTime? dueDate,
+      String? description,
+      bool? completed}) {
+    final taskIndex = _tasks.indexWhere((element) => element.taskId == taskId);
+    if (taskIndex != -1)
+      _tasks[taskIndex] = _tasks[taskIndex].copyWith(
+        taskName: taskName,
+        dueDate: dueDate,
+        description: description,
+        completed: completed
+      );
+  }
+
   List<Tasks> viewAllTasks() {
     return tasks;
   }

@@ -45,21 +45,11 @@ class TodoListRepositoryImpl implements TodoListRepository {
 
   @override
   Future<Either<Failure, Tasks>> viewSpecificTask(String taskId) async {
-    if (await networkInfo.isConnected) {
       try {
         final remoteTodo = await remoteDataSource.viewSpecificTask(taskId);
-        localDataSource.cacheCurrentTask(remoteTodo);
         return Right(remoteTodo);
       } on ServerException {
         return Left(ServerFailure());
       }
-    } else {
-      try {
-        final localTodo = await localDataSource.getSpecificTask(taskId);
-        return Right(localTodo);
-      } on CacheException {
-        return Left(CacheFailure());
-      }
-    }
   }
 }

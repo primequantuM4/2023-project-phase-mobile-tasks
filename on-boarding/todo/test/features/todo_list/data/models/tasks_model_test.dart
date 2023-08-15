@@ -18,8 +18,8 @@ void main() {
   });
 
   group('fromJson', () {
-    test('Should output a valid Task Model', () {
-      final Map<String, dynamic> jsonMap = jsonDecode(fixture('tasks.json'));
+    test('Should output a valid Task Model', ()async {
+      final Map<String, dynamic> jsonMap = await jsonDecode(fixture('tasks.json'));
       final result = TasksModel.fromJson(jsonMap);
       expect(result, equals(tTasksModel));
     });

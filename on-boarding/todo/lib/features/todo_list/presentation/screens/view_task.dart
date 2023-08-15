@@ -14,17 +14,17 @@ class ViewTask extends StatefulWidget {
 }
 
 class _ViewTaskState extends State<ViewTask> {
-  late DateTime dueDateText;
+  late DateTime dueDateValue;
 
   void changeDate() async {
     DateTime? newDate = await showDatePicker(
         context: context,
-        initialDate: dueDateText,
+        initialDate: dueDateValue,
         firstDate: DateTime.now(),
         lastDate: DateTime(2100));
     if (newDate != null) {
       setState(() {
-        dueDateText = newDate;
+        dueDateValue = newDate;
       });
     }
   }
@@ -32,7 +32,7 @@ class _ViewTaskState extends State<ViewTask> {
   @override
   void initState() {
     super.initState();
-    dueDateText = widget.tasks.dueDate;
+    dueDateValue = widget.tasks.dueDate;
   }
 
   @override
@@ -41,7 +41,7 @@ class _ViewTaskState extends State<ViewTask> {
       appBar: CustomAppBar(
           titleText: "Task Detail",
           onLeadingPressed: () {
-            context.pop(dueDateText);
+            context.pop(dueDateValue);
           }),
       body: SingleChildScrollView(
         child: Column(
@@ -68,8 +68,8 @@ class _ViewTaskState extends State<ViewTask> {
               height: 15,
             ),
             CustomTextView(
-              key: ValueKey(dueDateText),
-              passedValue: DateFormat('MMM dd, yyyy').format(dueDateText),
+              key: ValueKey(dueDateValue),
+              passedValue: DateFormat('MMM dd, yyyy').format(dueDateValue),
               textHeader: "Due date",
               buttonVal: TextButton(
                   onPressed: changeDate, child: const Text('Extend deadline')),

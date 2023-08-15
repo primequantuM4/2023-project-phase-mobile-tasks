@@ -2,29 +2,12 @@ import 'package:intl/intl.dart';
 import 'package:todo/features/todo_list/domain/entity/tasks.dart';
 
 class TasksModel extends Tasks {
-  @override
-  final String taskName;
-  @override
-  final String description;
-  @override
-  final DateTime dueDate;
-  @override
-  final String taskId;
-  @override
-  final bool completed;
-
-  const TasksModel(
-      {required this.taskName,
-      required this.description,
-      required this.dueDate,
-      required this.taskId,
-      required this.completed})
-      : super(
-            taskName: taskName,
-            dueDate: dueDate,
-            description: description,
-            taskId: taskId,
-            completed: completed);
+  TasksModel(
+      {required super.taskName,
+      required super.dueDate,
+      required super.description,
+      required super.taskId,
+      required super.completed});
 
   factory TasksModel.fromJson(Map<String, dynamic> jsonMap) {
     return TasksModel(

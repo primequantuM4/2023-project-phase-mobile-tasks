@@ -126,7 +126,7 @@ void main() {
   });
 
   group('ViewSpecificTasks', () {
-    final String taskId = "taskId";
+    const String taskId = "taskId";
     final TasksModel tTodoModel = TasksModel(
         taskName: "Tests",
         description: "Test",
@@ -134,12 +134,6 @@ void main() {
         taskId: taskId,
         completed: false);
     final Tasks tTodo = tTodoModel;
-    test('should check if device is online', () async {
-      when(networkInfo.isConnected).thenAnswer((_) async => true);
-
-      repository.viewSpecificTask("");
-      verify(networkInfo.isConnected);
-    });
 
     runTestsOnline(() {
       test(
@@ -153,16 +147,6 @@ void main() {
       });
 
       test(
-          'Should cache the data locally when the call to remote data is successful',
-          () async {
-        when(remoteDataSource.viewSpecificTask(any))
-            .thenAnswer((_) async => tTodoModel);
-        await repository.viewSpecificTask(taskId);
-        verify(remoteDataSource.viewSpecificTask(any));
-        verify(localDataSource.cacheCurrentTask(tTodoModel));
-      });
-
-      test(
           'Should return server failure when the call to remote data is unsuccessful',
           () async {
         when(remoteDataSource.viewSpecificTask(any))
@@ -171,27 +155,6 @@ void main() {
         verify(remoteDataSource.viewSpecificTask(any));
         verifyZeroInteractions(localDataSource);
         expect(result, equals(Left(ServerFailure())));
-      });
-    });
-    runTestsOffline(() {
-      test(
-          'Should return last locally cached data when the cached data is present',
-          () async {
-        when(localDataSource.getSpecificTask(any))
-            .thenAnswer((_) async => tTodoModel);
-        final result = await repository.viewSpecificTask(taskId);
-        verifyZeroInteractions(remoteDataSource);
-        verify(localDataSource.getSpecificTask(taskId));
-        expect(result, equals(Right(tTodo)));
-      });
-
-      test('Should return CacheFailure when there is no cached data present',
-          () async {
-        when(localDataSource.getSpecificTask(any)).thenThrow(CacheException());
-        final result = await repository.viewSpecificTask(taskId);
-        verifyZeroInteractions(remoteDataSource);
-        verify(localDataSource.getSpecificTask(any));
-        expect(result, equals(Left(CacheFailure())));
       });
     });
   });
