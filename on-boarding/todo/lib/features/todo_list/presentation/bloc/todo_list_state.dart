@@ -8,9 +8,11 @@ sealed class TodoListState extends Equatable {
   List<Object?> get props => [];
 }
 
-class TodoListInitial extends TodoListState { }
+final class TodoListEmpty extends TodoListState {}
 
-class TodoListLoading extends TodoListState { }
+final class TodoListInitial extends TodoListState {}
+
+final class TodoListLoading extends TodoListState {}
 
 final class TodoListLoaded extends TodoListState {
   final List<Tasks> tasks;
@@ -19,4 +21,13 @@ final class TodoListLoaded extends TodoListState {
 
   @override
   List<Object> get props => [tasks];
+}
+
+final class TodoError extends TodoListState {
+  final String message;
+
+  TodoError(this.message);
+
+  @override
+  List<Object> get props => [message];
 }
