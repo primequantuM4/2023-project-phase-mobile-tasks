@@ -1,34 +1,34 @@
 import 'package:equatable/equatable.dart';
 
 class Tasks extends Equatable {
-  final String taskName;
+  final String title;
   final DateTime dueDate;
   final String description;
-  final String taskId;
-  final bool completed;
+  final String id;
+  final bool status;
 
   Tasks(
-      {required this.taskName,
+      {required this.title,
       required this.dueDate,
       required this.description,
-      required this.taskId,
-      required this.completed});
+      required this.id,
+      required this.status});
 
   Tasks copyWith(
-      {String? taskName,
+      {String? title,
       DateTime? dueDate,
       String? description,
-      String? taskId,
-      bool? completed}) {
+      String? id,
+      bool? status}) {
     return Tasks(
-        taskName: taskName ?? this.taskName,
+        title: title ?? this.title,
         dueDate: dueDate ?? this.dueDate,
         description: description ?? this.description,
-        taskId: taskId ?? this.taskId,
-        completed: completed ?? this.completed);
+        id: id ?? this.id,
+        status: status ?? this.status);
   }
 
   @override
   List<Object?> get props =>
-      [taskName, dueDate, description, taskId, completed];
+      [title, dueDate, description, id, status];
 }

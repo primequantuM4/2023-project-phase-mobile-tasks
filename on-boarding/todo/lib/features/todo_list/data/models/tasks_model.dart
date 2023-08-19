@@ -3,27 +3,30 @@ import 'package:todo/features/todo_list/domain/entity/tasks.dart';
 
 class TasksModel extends Tasks {
   TasksModel(
-      {required super.taskName,
+      {required super.title,
       required super.dueDate,
       required super.description,
-      required super.taskId,
-      required super.completed});
+      required super.id,
+      required super.status});
 
   factory TasksModel.fromJson(Map<String, dynamic> jsonMap) {
+    final bool convertedStatus =
+        jsonMap["status"] == "Completed" ? true : false;
     return TasksModel(
-        taskName: jsonMap["taskName"],
+        title: jsonMap["title"],
         description: jsonMap["description"],
         dueDate: DateTime.parse(jsonMap["dueDate"]),
-        taskId: jsonMap["taskId"],
-        completed: jsonMap["completed"]);
+        id: jsonMap["id"],
+        status: convertedStatus);
   }
   Map<String, dynamic> toJson() {
+    final String curStats = status == false ? "In Progress" : "Completed";
     return {
-      'taskName': taskName,
+      'title': title,
       'description': description,
       'dueDate': DateFormat('yyyy-MM-dd').format(dueDate),
-      'taskId': taskId,
-      'completed': completed
+      'id': id,
+      'status': curStats
     };
   }
 }

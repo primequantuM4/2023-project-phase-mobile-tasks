@@ -1,9 +1,35 @@
-[
-  {
-    "taskName": "Task",
-    "description": "Test Task",
-    "dueDate": "2023-10-10",
-    "taskId": "testId",
-    "completed": false
-  }
-]
+{
+    "success": true,
+    "data": [
+        {
+            "_id": "64de042f7faee09bff807dc7",
+            "title": "personal",
+            "description": "loreremf edsgf ewdifjewo fe fek fneow gwe",
+            "status": "In Progress",
+            "dueDate": "2023-10-09T21:00:00.000Z",
+            "createdAt": "2023-08-17T11:27:43.293Z",
+            "__v": 0,
+            "id": "64de042f7faee09bff807dc7"
+        },
+        {
+            "_id": "64de06ea59d506578e891e34",
+            "title": "personal",
+            "description": "edsgf ewdifjewo fe fek fneow gwe",
+            "status": "Not Started",
+            "dueDate": "2023-10-10T00:00:00.000Z",
+            "createdAt": "2023-08-17T11:39:22.199Z",
+            "__v": 0,
+            "id": "64de06ea59d506578e891e34"
+        },
+        {
+            "_id": "64de070959d506578e891e37",
+            "title": "personal",
+            "description": "edsgf ewdifjewo fe fek fneow gwe",
+            "status": "Completed",
+            "dueDate": "2023-10-10T00:00:00.000Z",
+            "createdAt": "2023-08-17T11:39:53.566Z",
+            "__v": 0,
+            "id": "64de070959d506578e891e37"
+        }
+    ]
+}

@@ -3,18 +3,20 @@ import 'package:flutter/material.dart';
 class CustomFormField extends StatelessWidget {
   const CustomFormField(
       {super.key,
-      required this.taskName,
-      required this.taskNameController,
+      required this.title,
+      required this.titleController,
       this.icon,
       this.action,
-      this.height
+      this.height,
+      this.inputType
       });
 
-  final TextEditingController taskNameController;
-  final String taskName;
+  final TextEditingController titleController;
+  final String title;
   final IconData? icon;
   final VoidCallback? action;
   final int? height;
+  final TextInputType? inputType;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class CustomFormField extends StatelessWidget {
         alignment: Alignment.centerLeft,
         margin: const EdgeInsets.only(left: 50),
         child: Text(
-          taskName,
+          title,
           style: const TextStyle(
               color: Color(0xFFEE6F57),
               fontSize: 15,
@@ -44,8 +46,8 @@ class CustomFormField extends StatelessWidget {
           child: TextFormField(
             maxLines: null,
             autocorrect: true,
-            controller: taskNameController,
-            keyboardType: TextInputType.multiline,
+            controller: titleController,
+            keyboardType: this.inputType?? TextInputType.multiline,
             style: const TextStyle(color: Colors.black),
             decoration: InputDecoration(
                 border: InputBorder.none,

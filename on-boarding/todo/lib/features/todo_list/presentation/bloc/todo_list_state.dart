@@ -16,11 +16,21 @@ final class TodoListLoading extends TodoListState {}
 
 final class TodoListLoaded extends TodoListState {
   final List<Tasks> tasks;
+  final Status stateError;
 
-  const TodoListLoaded(this.tasks);
+  const TodoListLoaded(this.tasks, this.stateError);
 
   @override
-  List<Object> get props => [tasks];
+  List<Object> get props => [tasks, stateError];
+}
+
+final class TodoTaskLoaded extends TodoListState {
+  final Tasks task;
+
+  TodoTaskLoaded(this.task);
+
+  @override
+  List<Object> get props => [task];
 }
 
 final class TodoError extends TodoListState {
@@ -30,4 +40,11 @@ final class TodoError extends TodoListState {
 
   @override
   List<Object> get props => [message];
+}
+
+enum Status {
+  None,
+  CreatedSuccess,
+  InputError,
+  EditSuccess,
 }

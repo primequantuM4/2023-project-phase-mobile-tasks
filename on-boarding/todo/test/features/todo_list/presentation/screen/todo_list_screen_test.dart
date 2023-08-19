@@ -36,11 +36,11 @@ void main() {
       await widgetTester.tap(find.text('Create Task'));
       await widgetTester.pumpAndSettle();
 
-      const taskName = 'Task test';
+      const title = 'Task test';
       const dueDate = '2024-10-10';
       const description = 'This is a task description';
 
-      final valueList = [taskName, dueDate, description];
+      final valueList = [title, dueDate, description];
 
       for (int i = 0; i < valueList.length; i++) {
         final frmField = find.byType(CustomFormField).at(i);
@@ -49,7 +49,7 @@ void main() {
         await widgetTester.enterText(cntr, valueList[i]);
       }
 
-      expect(find.text(taskName), findsOneWidget);
+      expect(find.text(title), findsOneWidget);
       expect(find.text(dueDate), findsOneWidget);
       expect(find.text(description), findsOneWidget);
 

@@ -57,11 +57,11 @@ void main() {
   group('ViewAllTasks', () {
     final List<TasksModel> tTodoListModel = [
       TasksModel(
-          taskName: "Tests",
+          title: "Tests",
           description: "Test",
           dueDate: DateTime.now(),
-          taskId: "taskId",
-          completed: false)
+          id: "id",
+          status: false)
     ];
     final List<Tasks> tTodoList = tTodoListModel;
     test('should check if device is online', () async {
@@ -126,13 +126,13 @@ void main() {
   });
 
   group('ViewSpecificTasks', () {
-    const String taskId = "taskId";
+    const String id = "id";
     final TasksModel tTodoModel = TasksModel(
-        taskName: "Tests",
+        title: "Tests",
         description: "Test",
         dueDate: DateTime.now(),
-        taskId: taskId,
-        completed: false);
+        id: id,
+        status: false);
     final Tasks tTodo = tTodoModel;
 
     runTestsOnline(() {
@@ -141,7 +141,7 @@ void main() {
           () async {
         when(remoteDataSource.viewSpecificTask(any))
             .thenAnswer((_) async => tTodoModel);
-        final result = await repository.viewSpecificTask(taskId);
+        final result = await repository.viewSpecificTask(id);
         verify(remoteDataSource.viewSpecificTask(any));
         expect(result, equals(Right(tTodo)));
       });
@@ -151,7 +151,7 @@ void main() {
           () async {
         when(remoteDataSource.viewSpecificTask(any))
             .thenThrow(ServerException());
-        final result = await repository.viewSpecificTask(taskId);
+        final result = await repository.viewSpecificTask(id);
         verify(remoteDataSource.viewSpecificTask(any));
         verifyZeroInteractions(localDataSource);
         expect(result, equals(Left(ServerFailure())));

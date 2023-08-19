@@ -23,18 +23,18 @@ void main() {
       () async {
     final List<Tasks> tasks = [
     Tasks(
-      taskName: 'Task 1',
+      title: 'Task 1',
       dueDate: DateTime(2023, 8, 10),
       description: 'Description 1',
-      taskId: 'task_1',
-      completed: false,
+      id: 'task_1',
+      status: false,
     ),
     Tasks(
-      taskName: 'Task 2',
+      title: 'Task 2',
       dueDate: DateTime(2023, 8, 15),
       description: 'Description 2',
-      taskId: 'task_2',
-      completed: true,
+      id: 'task_2',
+      status: true,
     ),
   ];
     when(mockTodoListRepository.viewAllTasks())

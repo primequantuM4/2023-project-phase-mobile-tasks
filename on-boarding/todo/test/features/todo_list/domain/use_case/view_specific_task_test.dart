@@ -23,14 +23,14 @@ void main() {
   test('Should be able to get a specific task that is available in repository',
       () async {
     final Tasks task = Tasks(
-        taskName: "Task",
+        title: "Task",
         dueDate: DateTime.now(),
         description: " description",
-        taskId: "taskId",
-        completed: false);
+        id: "id",
+        status: false);
     when(mockTodoListRepository.viewSpecificTask(any))
         .thenAnswer((_) async => Right(task));
-    final result = await usecase("taskId");
+    final result = await usecase("id");
     expect(result, Right(task));
     verify(mockTodoListRepository.viewSpecificTask(any));
     verifyNoMoreInteractions(mockTodoListRepository);

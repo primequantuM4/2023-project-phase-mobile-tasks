@@ -8,41 +8,41 @@ class TaskUseCase {
   Tasks createTask(
       String taskName, String taskDescription, DateTime taskDueDate) {
     final newTask = Tasks(
-        taskName: taskName,
+        title: taskName,
         dueDate: taskDueDate,
         description: taskDescription,
-        taskId: DateTime.now().millisecondsSinceEpoch.toString(),
-        completed: false);
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        status: false);
     _tasks.add(newTask);
     return newTask;
   }
 
-  void completeTask(String taskId) {
-    final taskIndex = _tasks.indexWhere((task) => task.taskId == taskId);
+  void completeTask(String id) {
+    final taskIndex = _tasks.indexWhere((task) => task.id == id);
     if (taskIndex != -1) {
       _tasks[taskIndex] =
-          _tasks[taskIndex].copyWith(completed: !_tasks[taskIndex].completed);
+          _tasks[taskIndex].copyWith(status: !_tasks[taskIndex].status);
     }
   }
 
-  Tasks viewSpecificTask(String taskId) {
-    final taskIndex = _tasks.indexWhere((element) => element.taskId == taskId);
+  Tasks viewSpecificTask(String id) {
+    final taskIndex = _tasks.indexWhere((element) => element.id == id);
     return _tasks[taskIndex];
   }
 
   void editTask(
-      {required String taskId,
+      {required String id,
       String? taskName,
       DateTime? dueDate,
       String? description,
-      bool? completed}) {
-    final taskIndex = _tasks.indexWhere((element) => element.taskId == taskId);
+      bool? status}) {
+    final taskIndex = _tasks.indexWhere((element) => element.id == id);
     if (taskIndex != -1)
       _tasks[taskIndex] = _tasks[taskIndex].copyWith(
-        taskName: taskName,
+        title: taskName,
         dueDate: dueDate,
         description: description,
-        completed: completed
+        status: status
       );
   }
 

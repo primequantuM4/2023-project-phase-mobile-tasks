@@ -19,21 +19,18 @@ class TodoListLocalDataSourceImpl implements TodoListLocalDataSource {
 
   @override
   Future<void> cacheCurrentTodoList(List<TasksModel> todoListToCache) {
-    final List<String> jsonList = [];
-
-    for (var i in todoListToCache) jsonList.add(jsonEncode(i.toJson()));
-    return sharedPreferences.setStringList(CACHED_TODO_LIST, jsonList);
-  
+    final jsonList = jsonEncode(todoListToCache);
+    return sharedPreferences.setString(CACHED_TODO_LIST, jsonList);
   }
 
   @override
-  Future<List<TasksModel>> getAllTasks() {
-    final jsonValues = sharedPreferences.getStringList(CACHED_TODO_LIST);
+  Future<List<TasksModel>> getAllTasks() async {
+    final jsonValues = await sharedPreferences.getString(CACHED_TODO_LIST);
     if (jsonValues != null) {
-      final List<TasksModel> convertedList = [];
-      for (var i in jsonValues) {
-        convertedList.add(TasksModel.fromJson(jsonDecode(i)));
-      }
+      final Map<String, dynamic> jsonList = jsonDecode(jsonValues);
+      final List<TasksModel> convertedList = jsonList["data"]
+          .map<TasksModel>((json) => TasksModel.fromJson(json))
+          .toList();
       return Future.value(convertedList);
     } else {
       throw CacheException();

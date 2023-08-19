@@ -23,7 +23,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
     if (result != null) {
       setState(() {
         _taskUseCase.createTask(
-            result["taskName"] as String,
+            result["title"] as String,
             result["description"] as String,
             DateTime.parse(result["dueDate"] as String));
       });
@@ -32,14 +32,14 @@ class _TodoListScreenState extends State<TodoListScreen> {
 
   void markTask(element) {
     setState(() {
-      _taskUseCase.completeTask(element.taskId);
+      _taskUseCase.completeTask(element.id);
     });
   }
 
   void editTaskDeadline(element) async {
     DateTime? result = await context.push('/view-task', extra: element);
     setState(() {
-      _taskUseCase.editTask(taskId: element.taskId, dueDate: result!);
+      _taskUseCase.editTask(id: element.id, dueDate: result!);
     });
   }
 
@@ -80,7 +80,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                       onComplete: () {
                         markTask(element);
                       },
-                      colorPick: colorMapping[element.completed]!,
+                      colorPick: colorMapping[element.status]!,
                     ));
               }).toList(),
             ),

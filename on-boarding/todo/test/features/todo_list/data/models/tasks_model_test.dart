@@ -8,18 +8,18 @@ import '../../../../fixtures/fixture.dart';
 
 void main() {
   final tTasksModel = TasksModel(
-      taskName: "Task",
+      title: "Task",
       description: "Test Task",
       dueDate: DateTime.parse('2023-10-10'),
-      taskId: "testId",
-      completed: false);
+      id: "testId",
+      status: false);
   test('should be a sub-type of Tasks entity', () async {
     expect(tTasksModel, isA<Tasks>());
   });
 
   group('fromJson', () {
     test('Should output a valid Task Model', ()async {
-      final Map<String, dynamic> jsonMap = await jsonDecode(fixture('tasks.json'));
+      final Map<String, dynamic> jsonMap = await jsonDecode(fixture('tasks.json'))["data"];
       final result = TasksModel.fromJson(jsonMap);
       expect(result, equals(tTasksModel));
     });
@@ -28,11 +28,11 @@ void main() {
     test('Should return a JSON map containing the proper data', () {
       final result = tTasksModel.toJson();
       final expectedMap = {
-        "taskName": "Task",
+        "title": "Task",
         "description": "Test Task",
         "dueDate": "2023-10-10",
-        "taskId": "testId",
-        "completed": false
+        "id": "testId",
+        "status": "In Progress"
       };
       expect(result, equals(expectedMap));
     });

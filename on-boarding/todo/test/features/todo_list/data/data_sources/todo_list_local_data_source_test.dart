@@ -22,18 +22,19 @@ void main() {
         TodoListLocalDataSourceImpl(sharedPreferences: mockSharedPreferences);
   });
   group('getAllTasks', () {
-    final tTodoListModel = [
-      TasksModel.fromJson(jsonDecode(fixture('tasks.json')))
-    ];
+    final jsonList = jsonDecode(fixture('view_all_tasks.json'));
+    final tTodoListModel = jsonList["data"]
+        .map<TasksModel>((json) => TasksModel.fromJson(json))
+        .toList();
     test(
         'Should return Tasks from SharedPreferences when there is one in the cache ',
         () async {
-      when(mockSharedPreferences.getStringList(any))
-          .thenReturn([fixture('tasks.json')]);
+      when(mockSharedPreferences.getString(any))
+          .thenReturn((fixture(('view_all_tasks.json'))));
 
       final result = await dataSource.getAllTasks();
 
-      verify(mockSharedPreferences.getStringList(CACHED_TODO_LIST));
+      verify(mockSharedPreferences.getString(CACHED_TODO_LIST));
       expect(result, equals(tTodoListModel));
     });
 
@@ -47,20 +48,17 @@ void main() {
   group('cacheCurrentTodoList', () {
     final tTodoListToCache = [
       TasksModel(
-          taskName: "Task",
+          title: "Task",
           dueDate: DateTime.parse('2023-10-10'),
           description: "Task test",
-          taskId: "testId",
-          completed: false)
+          id: "testId",
+          status: false)
     ];
     test('Should call shared preferences to cache the data', () async {
       dataSource.cacheCurrentTodoList(tTodoListToCache);
 
-      final List<String> expectedJsonList = [];
-      for (var i in tTodoListToCache) {
-        expectedJsonList.add(jsonEncode(i.toJson()));
-      }
-      verify(mockSharedPreferences.setStringList(
+      final expectedJsonList = jsonEncode(tTodoListToCache);
+      verify(mockSharedPreferences.setString(
           CACHED_TODO_LIST, expectedJsonList));
     });
   });

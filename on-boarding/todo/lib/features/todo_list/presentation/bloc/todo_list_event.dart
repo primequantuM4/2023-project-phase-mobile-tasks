@@ -16,8 +16,8 @@ class CompletedTask extends TodoListEvent {
   CompletedTask(this.taskId);
 }
 
-class CreateTask extends TodoListEvent {
+class CreateTasks extends TodoListEvent {
   final Tasks newTask;
 
-  CreateTask(this.newTask);
+  CreateTasks(this.newTask);
 }

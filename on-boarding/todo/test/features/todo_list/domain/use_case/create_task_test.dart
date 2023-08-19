@@ -19,11 +19,11 @@ void main() {
   test("""should be able to call the repository when creating a task""",
       () async {
     final Tasks tasks = Tasks(
-        taskName: "",
+        title: "",
         dueDate: DateTime.now(),
         description: "",
-        taskId: "taskId",
-        completed: false);
+        id: "id",
+        status: false);
     when(mockTodoListRepository.createTask(tasks))
         .thenAnswer((_) async => Right(tasks));
     final result = await usecase(Params(tasks: tasks));

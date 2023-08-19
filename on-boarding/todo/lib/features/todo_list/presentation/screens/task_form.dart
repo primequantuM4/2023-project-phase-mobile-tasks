@@ -15,7 +15,7 @@ class TaskForm extends StatefulWidget {
 }
 
 class TaskFormState extends State<TaskForm> {
-  final TextEditingController taskName = TextEditingController();
+  final TextEditingController title = TextEditingController();
   final TextEditingController description = TextEditingController();
   final TextEditingController dueDate = TextEditingController();
 
@@ -23,10 +23,10 @@ class TaskFormState extends State<TaskForm> {
 
   void addTaskList() {
     bool everyThingFilled =
-        taskName.text != "" && description.text != "" && dueDate.text != "";
+        title.text != "" && description.text != "" && dueDate.text != "";
     if (everyThingFilled) {
       final newTask = {
-        "taskName": taskName.text,
+        "title": title.text,
         "description": description.text,
         "dueDate": dueDate.text
       };
@@ -46,17 +46,18 @@ class TaskFormState extends State<TaskForm> {
             height: 60,
           ),
           CustomFormField(
-            taskNameController: taskName,
-            taskName: "Main task name",
+            titleController: title,
+            title: "Main task name",
             height: 45,
           ),
           const SizedBox(
             height: 40,
           ),
           CustomFormField(
-            taskName: "Due date",
-            taskNameController: dueDate,
+            title: "Due date",
+            titleController: dueDate,
             icon: Icons.calendar_today,
+            inputType: TextInputType.datetime,
             action: () async {
               DateTime? newDate = await showDatePicker(
                   context: context,
@@ -75,8 +76,8 @@ class TaskFormState extends State<TaskForm> {
           ),
           CustomFormField(
               height: 60,
-              taskName: "Description",
-              taskNameController: description),
+              title: "Description",
+              titleController: description),
           const SizedBox(
             height: 40,
           ),

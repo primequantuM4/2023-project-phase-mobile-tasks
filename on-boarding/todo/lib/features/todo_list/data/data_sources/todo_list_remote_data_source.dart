@@ -17,7 +17,7 @@ class TodoListRemoteDataSourceImpl implements TodoListRemoteDataSource {
   @override
   Future<TasksModel> createTask(TasksModel tasks) async {
     final createdTask = await client.post(
-        Uri.parse('http://192.168.137.122:8080/todo-list'),
+        Uri.parse('https://mock-todo-api-ib6b.onrender.com/api/v1/todo'),
         body: jsonEncode(tasks.toJson()));
     if (createdTask.statusCode == 201) {
       return tasks;
@@ -29,10 +29,10 @@ class TodoListRemoteDataSourceImpl implements TodoListRemoteDataSource {
   @override
   Future<List<TasksModel>> viewAllTasks() async {
     final result =
-        await client.get(Uri.parse('http://192.168.137.122:8080/todo-list'));
+        await client.get(Uri.parse('https://mock-todo-api-ib6b.onrender.com/api/v1/todo'));
     if (result.statusCode == 200) {
       final jsonResponse = jsonDecode(result.body);
-      final List<TasksModel> tasksList = jsonResponse
+      final List<TasksModel> tasksList = jsonResponse["data"]
           .map<TasksModel>((json) => TasksModel.fromJson(json))
           .toList();
       return tasksList;
@@ -44,9 +44,9 @@ class TodoListRemoteDataSourceImpl implements TodoListRemoteDataSource {
   @override
   Future<TasksModel> viewSpecificTask(String taskId) async {
     final result = await client
-        .get(Uri.parse('http://192.168.137.122:8080/todo-list/$taskId'));
+        .get(Uri.parse('https://mock-todo-api-ib6b.onrender.com/api/v1/todo/$taskId'));
     if (result.statusCode == 200) {
-      final task = TasksModel.fromJson(jsonDecode(result.body));
+      final task = TasksModel.fromJson(jsonDecode(result.body)["data"]);
       return task;
     } else {
       throw ServerException();

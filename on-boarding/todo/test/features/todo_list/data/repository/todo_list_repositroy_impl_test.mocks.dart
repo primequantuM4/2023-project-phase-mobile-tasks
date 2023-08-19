@@ -6,13 +6,12 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:todo/core/network/network_info.dart' as _i7;
+import 'package:todo/core/network/network_info.dart' as _i6;
 import 'package:todo/features/todo_list/data/data_sources/todo_list_local_data_source.dart'
-    as _i6;
+    as _i5;
 import 'package:todo/features/todo_list/data/data_sources/todo_list_remote_data_source.dart'
     as _i3;
 import 'package:todo/features/todo_list/data/models/tasks_model.dart' as _i2;
-import 'package:todo/features/todo_list/domain/entity/tasks.dart' as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -41,7 +40,7 @@ class _FakeTasksModel_0 extends _i1.SmartFake implements _i2.TasksModel {
 class MockTodoListRemoteDataSource extends _i1.Mock
     implements _i3.TodoListRemoteDataSource {
   @override
-  _i4.Future<_i2.TasksModel> createTask(_i5.Tasks? tasks) =>
+  _i4.Future<_i2.TasksModel> createTask(_i2.TasksModel? tasks) =>
       (super.noSuchMethod(
         Invocation.method(
           #createTask,
@@ -102,7 +101,7 @@ class MockTodoListRemoteDataSource extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTodoListLocalDataSource extends _i1.Mock
-    implements _i6.TodoListLocalDataSource {
+    implements _i5.TodoListLocalDataSource {
   @override
   _i4.Future<void> cacheCurrentTodoList(
           List<_i2.TasksModel>? todoListToCache) =>
@@ -129,7 +128,7 @@ class MockTodoListLocalDataSource extends _i1.Mock
 /// A class which mocks [NetworkInfo].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockNetworkInfo extends _i1.Mock implements _i7.NetworkInfo {
+class MockNetworkInfo extends _i1.Mock implements _i6.NetworkInfo {
   @override
   _i4.Future<bool> get isConnected => (super.noSuchMethod(
         Invocation.getter(#isConnected),

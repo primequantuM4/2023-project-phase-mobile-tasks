@@ -53,7 +53,7 @@ class _ViewTaskState extends State<ViewTask> {
               height: 15,
             ),
             CustomTextView(
-              passedValue: widget.tasks.taskName,
+              passedValue: widget.tasks.title,
               textHeader: "Title",
             ),
             const SizedBox(

@@ -32,11 +32,10 @@ class TodoApp extends StatelessWidget {
               ViewTask(tasks: state.extra! as Tasks))
     ]);
     return MaterialApp(
-      home: BlocProvider(
-        create: (context) => TodoListBloc(),
-        child: MaterialApp.router(
+      // home: BlocProvider(
+      //   create: (context) => TodoListBloc(),
+        home: MaterialApp.router(
           routerConfig: router,
-        ),
       ),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

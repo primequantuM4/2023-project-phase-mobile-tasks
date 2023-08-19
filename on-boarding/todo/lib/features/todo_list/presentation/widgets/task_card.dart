@@ -36,7 +36,7 @@ class TaskCard extends StatelessWidget {
                     radius: 30,
                     backgroundColor: Colors.white,
                     child: Text(
-                      tasks.taskName[0].toUpperCase(),
+                      tasks.title[0].toUpperCase(),
                     ),
                   ),
                 ),
@@ -48,7 +48,7 @@ class TaskCard extends StatelessWidget {
                     children: [
                       Wrap(children: [
                         Text(
-                          tasks.taskName,
+                          tasks.title,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -65,7 +65,7 @@ class TaskCard extends StatelessWidget {
                   children: [
                     Text(DateFormat("MMM dd, yyyy").format(tasks.dueDate)),
                     Checkbox(
-                        value: tasks.completed, onChanged: onChangedHandler)
+                        value: tasks.status, onChanged: onChangedHandler)
                   ],
                 ),
                 const SizedBox(

@@ -10,10 +10,10 @@ void main() {
   });
   group("Tasks use case", () {
     test('Task use case should be able to create a task', () {
-      const String taskName = "X";
+      const String title = "X";
       const String taskDescription = "Y";
       final date = DateTime.now();
-      tuc.createTask(taskName, taskDescription, date);
+      tuc.createTask(title, taskDescription, date);
       expect(tuc.tasks.length, 1);
     });
 
@@ -22,14 +22,14 @@ void main() {
       expect(result, isA<Tasks>());
     });
 
-    test('Tasks should be marked completed when a method is called', () {
+    test('Tasks should be marked status when a method is called', () {
       final task = tuc.createTask("X", "Y", DateTime.now());
       final taskIndex = tuc.tasks.indexWhere(
-        (element) => task.taskId == element.taskId,
+        (element) => task.id == element.id,
       );
-      expect(tuc.tasks[taskIndex].completed, false);
-      tuc.completeTask(task.taskId);
-      expect(tuc.tasks[taskIndex].completed, true);
+      expect(tuc.tasks[taskIndex].status, false);
+      tuc.completeTask(task.id);
+      expect(tuc.tasks[taskIndex].status, true);
     });
   });
 }

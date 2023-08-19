@@ -31,13 +31,13 @@ void main() {
   group('View all tasks', () {
     final jsonList = jsonDecode(fixture('view_all_tasks.json'));
     final List<TasksModel> tTodoListModel =
-        jsonList.map<TasksModel>((json) => TasksModel.fromJson(json)).toList();
+        jsonList["data"].map<TasksModel>((json) => TasksModel.fromJson(json)).toList();
     test('Should perform A GET request on a URL', () async {
       when(mockHttpClient.get(any, headers: anyNamed('headers'))).thenAnswer(
           (_) async => http.Response(fixture('view_all_tasks.json'), 200));
       dataSource.viewAllTasks();
       verify(mockHttpClient
-          .get(Uri.parse('http://192.168.137.122:8080/todo-list')));
+          .get(Uri.parse('https://mock-todo-api-ib6b.onrender.com/api/v1/todo')));
     });
     test('Should return List<TasksModel> when the response code is 200',
         () async {
@@ -56,44 +56,44 @@ void main() {
 
   group('View specific task', () {
     final json = jsonDecode(fixture('tasks.json'));
-    final tTodoListModel = TasksModel.fromJson(json);
-    final tTaskId = 'taskId';
+    final tTodoListModel = TasksModel.fromJson(json["data"]);
+    final tTaskId = 'id';
     test('Should perform A GET request on a URL with an id endpoint', () async {
       when(mockHttpClient.get(any, headers: anyNamed('headers')))
           .thenAnswer((_) async => http.Response(fixture('tasks.json'), 200));
-      dataSource.viewSpecificTask('taskId');
+      dataSource.viewSpecificTask('id');
       verify(mockHttpClient
-          .get(Uri.parse('http://192.168.137.122:8080/todo-list/$tTaskId')));
+          .get(Uri.parse('https://mock-todo-api-ib6b.onrender.com/api/v1/todo/$tTaskId')));
     });
     test('Should return List<TasksModel> when the response code is 200',
         () async {
       when(mockHttpClient.get(any, headers: anyNamed('headers')))
           .thenAnswer((_) async => http.Response(fixture('tasks.json'), 200));
-      final result = await dataSource.viewSpecificTask('taskId');
+      final result = await dataSource.viewSpecificTask('id');
       expect(result, equals(tTodoListModel));
     });
     test('Should throw a ServerException when the response is an error',
         () async {
       when(mockHttpClient.get(any, headers: anyNamed('headers')))
           .thenAnswer((_) async => http.Response(fixture('tasks.json'), 404));
-      expect(() => dataSource.viewSpecificTask('taskId'),
+      expect(() => dataSource.viewSpecificTask('id'),
           throwsA(isA<ServerException>()));
     });
   });
   group('Create Task', () {
     final createdTask = TasksModel(
-        taskName: "Task",
+        title: "Task",
         dueDate: DateTime.parse('2023-10-10'),
         description: "Test Task",
-        taskId: "taskId",
-        completed: false);
+        id: "id",
+        status: false);
     test('Should perform a POST request on a URL', () async {
       when(mockHttpClient.post(any,
               headers: anyNamed('headers'), body: anyNamed('body')))
-          .thenAnswer((_) async => http.Response(fixture('tasks.json'), 201));
+          .thenAnswer((_) async => http.Response(fixture('create_task.json'), 201));
       await dataSource.createTask(createdTask);
       verify(mockHttpClient.post(
-          Uri.parse('http://192.168.137.122:8080/todo-list'),
+          Uri.parse('https://mock-todo-api-ib6b.onrender.com/api/v1/todo'),
           body: jsonEncode(createdTask.toJson())));
     });
     test('Should return a TasksModel when the reponse code is 201', () async {
